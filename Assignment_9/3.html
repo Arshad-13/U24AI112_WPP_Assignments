@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliver Dash - Your Online Indian Marketplace</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8c54ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 30px;
+            width: auto;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+            margin: 0 20px;
+            max-width: 600px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .search-bar button {
+            background-color: #8c54ff;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            font-weight: bold;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-nav div {
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .header-nav div:hover {
+            color: #8c54ff;
+        }
+
+        /* Categories Navigation */
+        .categories-nav {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .categories-nav div {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .categories-nav div:hover {
+            color: #8c54ff;
+        }
+
+        /* Banner Section */
+        .banner {
+            background-image: linear-gradient(to right, #242424, #4a2578);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .banner h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #8c54ff;
+        }
+
+        .banner p {
+            margin: 10px 0 0;
+            font-size: 16px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-card h3 {
+            margin: 15px 0 5px;
+            color: #ffffff;
+        }
+
+        .product-card .price {
+            color: #36b37e;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product-card .original-price {
+            text-decoration: line-through;
+            color: #999999;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .product-card .discount {
+            color: #36b37e;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .product-card button {
+            background-color: #333333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .product-card .buy-now {
+            background-color: #8c54ff;
+            margin-top: 5px;
+        }
+
+        .product-card .rating {
+            background-color: #36b37e;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 30px 20px;
+            margin-top: 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            color: #8c54ff;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-column ul li a:hover {
+            color: #8c54ff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            margin-top: 20px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .search-bar {
+                margin: 10px 0;
+                width: 100%;
+                max-width: none;
+            }
+            
+            .categories-nav {
+                flex-wrap: wrap;
+            }
+            
+            .categories-nav div {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            Deliver Dash
+            <img src="dash.jpg" alt="Deliver Dash Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+        </div>
+        <nav class="header-nav">
+            <div>Login</div>
+            <div>Account</div>
+            <div>Cart (0)</div>
+        </nav>
+    </header>
+
+    <!-- Categories Navigation -->
+    <nav class="categories-nav">
+        <div>Electronics</div>
+        <div>Mobiles</div>
+        <div>Fashion</div>
+        <div>Books</div>
+        <div>Home & Kitchen</div>
+        <div>Toys & Games</div>
+        <div>Coustomor Services</div>
+    </nav>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <h2>Great Indian Festival Sale!</h2>
+        <p>Enjoy up to 70% off on popular electronics, clothing and more!</p>
+    </div>
+
+    <!-- Product Grid -->
+    <main class="product-grid">
+        <div class="product-card">
+            <img src="Iphone.jpg" alt="Iphone 15 Pro">
+            <h3>Iphone 15 Pro</h3>
+            <div><span class="rating">4.5 ★</span> (2,384)</div>
+            <p class="price">₹94,499 <span class="original-price">₹1,25,990</span> <span class="discount">25% off</span></p>
+            <button>Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <img src="Asus.webp " alt="ROG">
+            <h3>ASUS ROG Strix G16 (2023) Gaming Laptop</h3>
+            <div><span class="rating">4.9 ★</span> (6,785)</div>
+            <p class="price">₹1,59,990 <span class="original-price">₹1,99,999</span> <span class="discount">20% off</span></p>
+            <button>Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <img src="cooling.jpg" alt="Coolin pad">
+            <h3>RGB Laptop Cooling Pad</h3>
+            <div><span class="rating">4.7 ★</span> (3,712)</div>
+            <p class="price">₹4,979 <span class="original-price">₹6,999</span> <span class="discount">29% off</span></p>
+            <button>Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <img src="headset.jpg" alt="Headset">
+            <h3>Gaming Headphone</h3>
+            <div><span class="rating">4.4 ★</span> (5,127)</div>
+            <p class="price">₹6,639 <span class="original-price">₹8,999</span> <span class="discount">26% off</span></p>
+            <button>Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <img src="PS5.jpg" alt="PS5">
+            <h3>Sony PS5® Console Video Game Disc - Fortnite Bundle </h3>
+            <div><span class="rating">4.6 ★</span> (7,437)</div>
+            <p class="price">₹58,880 <span class="original-price">₹70,999</span> <span class="discount">26% off</span></p>
+            <button>Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <img src="remote.jpg" alt="PS_remote">
+            <h3>PlayStation Portal Remote Player 5</h3>
+            <div><span class="rating">4.8 ★</span> (3,987)</div>
+            <p class="price">₹24,990 <span class="original-price">₹32,990</span> <span class="discount">24% off</span></p>
+            <button>Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="#">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>HELP</h3>
+                <ul>
+                    <li><a href="#">Payments</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Cancellation & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>POLICY</h3>
+                <ul>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONTACT US</h3>
+                <ul>
+                    <li><a href="#">Email: help@deliverdash.com</a></li>
+                    <li><a href="#">Phone: 1800-123-4567</a></li>
+                    <li><a href="#">Address: 123 Main Street, Mumbai, India</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Deliver Dash. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
